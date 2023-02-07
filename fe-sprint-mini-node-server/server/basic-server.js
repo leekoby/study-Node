@@ -18,9 +18,9 @@ const server = http.createServer((request, response) => {
         body.push(chunk);
       })
       .on("end", () => {
-        body = Buffer.concat(body).toString();
+        body = Buffer.concat(body).toString().toUpperCase();
         response.writeHead(201, defaultCorsHeader);
-        response.end(body.toUpperCase())
+        response.end(body)
       })
   } else if (request.method === "POST" && request.url === "/lower") {
     let body = [];
@@ -29,9 +29,9 @@ const server = http.createServer((request, response) => {
         body.push(chunk);
       })
       .on("end", () => {
-        body = Buffer.concat(body).toString();
+        body = Buffer.concat(body).toString().toLowerCase();
         response.writeHead(201, defaultCorsHeader);
-        response.end(body.toLowerCase())
+        response.end(body)
       })
   } else {
     response.statusCode = 404;
