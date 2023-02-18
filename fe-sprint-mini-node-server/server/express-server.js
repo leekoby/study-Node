@@ -3,7 +3,6 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 app.use(express.json({ strict: false }));
-app.use(express.urlencoded({ extended: true }));
 
 const PORT = 5000;
 
